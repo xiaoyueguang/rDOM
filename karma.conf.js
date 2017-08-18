@@ -1,8 +1,8 @@
 var base = require('./karma.base.js')
 
 module.exports = function (config) {
-  config.set(Object.assign(base), {
-    browsers: ['Chrome', 'Chrome_without_security'],
+  config.set(Object.assign(base, {
+    browsers: ['Chrome'],
     reporters: ['progress'],
     autoWatch: true,
     concurrency: Infinity,
@@ -11,5 +11,5 @@ module.exports = function (config) {
     ]),
     singleRun: true,
     logLevel: config.LOG_INFO
-  })
+  }))
 }
