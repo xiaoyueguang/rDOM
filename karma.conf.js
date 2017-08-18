@@ -9,7 +9,7 @@ module.exports = function (config) {
     plugins: base.plugins.concat([
       'karma-chrome-launcher'
     ]),
-    singleRun: true,
+    // singleRun: true,
     logLevel: config.LOG_INFO
   }))
 }

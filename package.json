@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "karma start karma.conf.js",
+    "test": "karma start karma.cover.config.js",
     "start": "rollup -c",
-    "test:cover": "karma start karma.cover.config.js"
+    "test:unit": "karma start karma.conf.js"
   },
   "author": "Ray",
   "license": "ISC",
