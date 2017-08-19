@@ -1,8 +1,9 @@
-import index from '../src/index.js'
+import $ from '../src/index.js'
+import Selector from '../src/selector'
 import {expect} from 'chai'
+import {beforeEach} from './helper'
 
-describe('Hello', function () {
-  it('First assert', function () {
-    expect(index).to.equal('Hello rDOM');
-  });
+describe('Instance: ', function () {
+
 });
+
