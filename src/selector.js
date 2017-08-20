@@ -4,7 +4,7 @@
 class Selector {
   constructor (query) {
     const elems = document.querySelectorAll(query)
-    elems.forEach((elem, index) => this[index] = elem)
+    new Array(elems).forEach((elem, index) => this[index] = elem)
     this.length = elems.length
   }
 }
