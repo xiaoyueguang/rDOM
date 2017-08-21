@@ -12,6 +12,12 @@ describe('Selector: ', function () {
     // expect(elem.length).to.equal(3)
   })
 
+  it('elem', function () {
+    const elem = $('div')
+    const div = $(elem[0])
+    expect(div).to.instanceof(Selector)
+  })
+
   it('#id', function () {
     const elem = $('#div')
     expect(elem.length).to.equal(1)
