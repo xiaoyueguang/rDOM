@@ -1,5 +1,5 @@
 import $ from '../src/index.js'
-import Selector from '../src/selector'
+
 import {expect} from 'chai'
 import {beforeEach} from './helper'
 
@@ -8,14 +8,13 @@ describe('Selector: ', function () {
 
   it('Instance', function () {
     const elem = $('div')
-    expect(elem).to.instanceof(Selector)
-    // expect(elem.length).to.equal(3)
+    expect(elem).to.instanceof($.rDOM.init)
   })
 
   it('elem', function () {
     const elem = $('div')
     const div = $(elem[0])
-    expect(div).to.instanceof(Selector)
+    expect(elem).to.instanceof($.rDOM.init)
   })
 
   it('#id', function () {
