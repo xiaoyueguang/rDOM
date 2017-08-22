@@ -1,10 +1,16 @@
-language: node_js
-node_js:
-  - '8.0.0'
-
+sudo: required
 addons:
   apt:
     sources:
       - google-chrome
     packages:
       - google-chrome-stable
+language: node_js
+node_js:
+  - '8.0.0'
+
+install:
+  - mkdir travis-chrome
+  - wget http://chrome.richardlloyd.org.uk/install_chrome.sh
+  - chmod u+x install_chrome.sh
+  - ./install_chrome.sh
