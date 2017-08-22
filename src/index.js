@@ -2,6 +2,7 @@ import * as DOMClass from './class'
 
 import * as collection from './collection'
 import {setCollection} from './collection'
+import * as classActions from './class'
 
 const $ = {
   addClass () {
@@ -38,6 +39,7 @@ const $ = {
 $.init.prototype = $
 
 $.extend(collection)
+$.extend(classActions)
 
 export default function rDOM (selector) {
   return new $.init(selector)

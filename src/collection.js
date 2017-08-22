@@ -4,7 +4,7 @@
  */
 export function eq (index) {
   const length = this._collections.length
-  return new this.init(this._collections[index > 0 ? index : length + index])
+  return new this.init(this._collections[index >= 0 ? index : length + index])
 }
 
 export function map (callback = () => {}) {
