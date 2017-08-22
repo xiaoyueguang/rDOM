@@ -19,6 +19,15 @@ module.exports = function (config) {
     ])
   })
 
+  if (process.env.TRAVIS) {
+    options.browsers = ['Chrome_travis_ci'];
+    options.customLaunchers = {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    }
+  }
   options.webpack.module.rules[0].options = {
     plugins: [['istanbul', {
       exclude: [
