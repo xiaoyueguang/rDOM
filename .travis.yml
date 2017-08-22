@@ -10,7 +10,8 @@ node_js:
   - '8.0.0'
 
 install:
-  - mkdir travis-chrome
-  - wget http://chrome.richardlloyd.org.uk/install_chrome.sh
-  - chmod u+x install_chrome.sh
-  - ./install_chrome.sh
+  - apt-get install google-chrome-stable
+  # - mkdir travis-chrome
+  # - wget http://chrome.richardlloyd.org.uk/install_chrome.sh
+  # - chmod u+x install_chrome.sh
+  # - ./install_chrome.sh
