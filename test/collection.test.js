@@ -27,4 +27,14 @@ describe('Collection', function () {
       expect(index).to.be.above(-1)
     })
   })
+
+  it('filter', function () {
+    expect($('div').filter(() => false)).to.be.length(0)
+    expect($('div').filter(() => true)).to.be.length(3)
+    const $filter = $('div').filter(elem => elem.className === 'rDOM')
+    expect($filter).to.be.length(1)
+    expect($filter[0].className).to.equal('rDOM')
+
+    // console.log($div.filter())
+  })
 })

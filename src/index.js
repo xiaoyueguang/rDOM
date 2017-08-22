@@ -1,6 +1,7 @@
 import * as DOMClass from './class'
 
 import * as collection from './collection'
+import {setCollection} from './collection'
 
 const $ = {
   addClass () {
@@ -22,9 +23,8 @@ const $ = {
     } else {
       this._selectors = selector
       const elems = document.querySelectorAll(selector)
-      Array.from(elems).forEach((elem, index) => this[index] = elem)
       this._collections = elems
-      this.length = elems.length
+      setCollection(this, elems)
     }
   },
   // 扩展
