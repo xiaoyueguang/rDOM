@@ -4,11 +4,13 @@ import * as collection from './collection'
 import {setCollection} from './collection'
 import * as classActions from './class'
 import * as styles from './styles'
+import * as events from './events'
+import {uuid} from './helper'
 
 const $ = {
-  addClass () {
+  // 全局唯一
+  uuid,
 
-  },
   init (selector) {
     this.query(selector)
   },
@@ -42,10 +44,12 @@ $.init.prototype = $
 $.extend(collection)
 $.extend(classActions)
 $.extend(styles)
+$.extend(events)
 
 export default function rDOM (selector) {
   return new $.init(selector)
 }
+rDOM.uuid = uuid
 rDOM.rDOM = $
 
 window.$ = rDOM
