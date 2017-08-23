@@ -11,3 +11,7 @@ export const normalizeToBreak = str => str.replace(/[A-Z]/g, data => `-${data.to
  * @return {string}
  */
 export const normalizeToCamel = str => str.replace(/\-[a-z]/g, data => data.substr(1).toUpperCase())
+
+export const generateUuid = () => Math.random().toString().substr(2)
+
+export const uuid = `rDOM${generateUuid()}`
