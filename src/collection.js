@@ -7,13 +7,13 @@ export function eq (index) {
   return new this.init(this._collections[index >= 0 ? index : length + index])
 }
 
-export function map (callback = () => {}) {
+export function map (callback) {
   Array.prototype.map.call(this._collections, callback)
   return this
 }
 /**
  * 过滤回调
- * @param {function} callback 
+ * @param {function} callback
  */
 export function filter (callback) {
   const newCollections = Array.prototype.filter.call(this._collections, callback)

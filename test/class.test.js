@@ -16,6 +16,7 @@ describe('Class', function () {
     expect($('.rDOM').hasClass('rDOM1')).to.be.false
     // 返回的还是原先的实例
     expect($('.rDOM').addClass('rDOM1')).to.instanceOf($.rDOM.init)
+    $('.rDOM').addClass('rDOM1')
     expect($('.rDOM').hasClass('rDOM1')).to.be.true
   })
 
@@ -24,6 +25,7 @@ describe('Class', function () {
     expect($('.rDOM').hasClass('rDOM1')).to.be.true
     // 返回的还是原先的实例
     expect($('.rDOM').removeClass('rDOM1')).to.instanceOf($.rDOM.init)
+    $('.rDOM').removeClass('rDOM1')
     expect($('.rDOM').hasClass('rDOM1')).to.be.false
   })
 

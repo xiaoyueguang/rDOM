@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start karma.cover.config.js",
-    "start": "rollup -c",
-    "test:unit": "karma start karma.conf.js"
+    "build": "rollup -c",
+    "test:unit": "karma start karma.conf.js",
+    "server:cover": "http-server"
+    
   },
   "author": "Ray",
   "license": "ISC",
