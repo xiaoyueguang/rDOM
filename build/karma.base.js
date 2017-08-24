@@ -16,10 +16,10 @@ module.exports = {
   basePath: '',
   frameworks: ['mocha'],
   files: [
-    'test/**/*.test.js'
+    '../test/**/*.test.js'
   ],
   preprocessors: {
-    'test/**/*.test.js': ['webpack', 'sourcemap']
+    '../test/**/*.test.js': ['webpack', 'sourcemap']
   },
   webpack: webpackConfig,
   webpackMiddleware: {

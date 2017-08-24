@@ -2,11 +2,11 @@
   "name": "rdom",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/rDOM.es.js",
   "scripts": {
-    "test": "karma start karma.cover.config.js",
-    "build": "rollup -c",
-    "test:unit": "karma start karma.conf.js",
+    "test": "karma start build/karma.cover.config.js",
+    "build": "node build/build.js",
+    "test:unit": "karma start build/karma.conf.js",
     "server:cover": "http-server"
     
   },
