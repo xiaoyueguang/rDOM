@@ -12,10 +12,9 @@
  */
 export function on (eventName, cb) {
   this.map(elem => {
-    elem[`on${eventName}`] = (e) => {
-      eventHandler(elem, eventName, this.uuid)
-      e.stopPropagation()
-      e.preventDefault()
+    elem[`on${eventName}`] = event => {
+      eventHandler(elem, eventName, this.uuid, event)
+      event.stopPropagation()
     }
     addEventFn(elem, eventName, this.uuid, cb)
   })
@@ -45,12 +44,30 @@ export function off (eventName, cb) {
   return this
 }
 
+/**
+ * 绑定事件, 仅触发一次
+ * @param {string} eventName 事件名
+ * @param {function} cb 回调
+ * @return {$} 自身实例 实现链式调用
+ */
 export function once (eventName, cb) {
-
+  const uuid = this.uuid
+  const context = this
+  function newCb (event) {
+    cb.call(this, event)
+    context.off(eventName, cb)
+  }
+  return this.on(eventName, newCb)
 }
 
+/**
+ * 触发事件
+ * @param {string} eventName 事件名
+ * @return {$} 自身实例 实现链式调用
+ */
 export function trigger (eventName) {
-
+  this.map(elem => elem[eventName] && elem[eventName]())
+  return this
 }
 
 /**
@@ -59,12 +76,11 @@ export function trigger (eventName) {
  * @param {string} eventName 事件名
  * @param {string} uuid 唯一码
  */
-function eventHandler (elem, eventName, uuid) {
+function eventHandler (elem, eventName, uuid, event) {
   const events = getEvents(elem, eventName, uuid)
-  // console.log(events)
   if (events) {
     events.map(cb => {
-      cb.apply(elem)
+      cb.call(elem, event)
     })
   }
 }
