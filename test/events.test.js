@@ -56,6 +56,7 @@ describe('Events', function () {
     $dom[0].click()
     expect(index).to.be.equal(4)
     $dom.off('click', cb)
+    $dom.off('hover')
     $dom[0].click()
     expect(index).to.be.equal(6)
   })
