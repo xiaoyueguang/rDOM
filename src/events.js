@@ -78,11 +78,9 @@ export function trigger (eventName) {
  */
 function eventHandler (elem, eventName, uuid, event) {
   const events = getEvents(elem, eventName, uuid)
-  if (events) {
-    events.map(cb => {
-      cb.call(elem, event)
-    })
-  }
+  events.map(cb => {
+    cb.call(elem, event)
+  })
 }
 
 /**
@@ -94,7 +92,6 @@ function eventHandler (elem, eventName, uuid, event) {
  */
 function addEventFn (elem, eventName, uuid, cb) {
   !elem[uuid] && (elem[uuid] = {Event: {}})
-  !elem[uuid].Event && (elem[uuid].Event = {})
   !elem[uuid].Event[eventName] && (elem[uuid].Event[eventName] = [])
   elem[uuid].Event[eventName].push(cb)
 }
