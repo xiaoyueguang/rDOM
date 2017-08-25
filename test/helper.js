@@ -14,20 +14,18 @@ export function beforeEach () {
   div.innerHTML = ''
 
   const classDIV = createElement()
-  classDIV.className = 'rDOM'
+  classDIV.className = 'simple-dom-query'
   insert(div, classDIV)
 
   const attrDIV = createElement()
-  attrDIV.setAttribute('rDOM', '1')
+  attrDIV.setAttribute('simple-dom-query', '1')
   insert(div, attrDIV)
 
   const span = document.createElement('span')
   span.innerHTML = 'span'
-  span.className = 'rDOM'
+  span.className = 'simple-dom-query'
   insert(attrDIV, span)
   insert(div, span)
-
-
 }
 
 export function insert (parent, child) {

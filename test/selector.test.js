@@ -8,13 +8,13 @@ describe('Selector: ', function () {
 
   it('Instance', function () {
     const elem = $('div')
-    expect(elem).to.instanceof($.rDOM.init)
+    expect(elem).to.instanceof($.simpleDomQuery.init)
   })
 
   it('elem', function () {
     const elem = $('div')
     const div = $(elem[0])
-    expect(elem).to.instanceof($.rDOM.init)
+    expect(elem).to.instanceof($.simpleDomQuery.init)
   })
 
   it('#id', function () {
@@ -23,7 +23,7 @@ describe('Selector: ', function () {
   })
 
   it('.class', function () {
-    const elem = $('.rDOM')
+    const elem = $('.simple-dom-query')
     expect(elem.length).to.equal(2)
   })
 
@@ -33,12 +33,12 @@ describe('Selector: ', function () {
   })
 
   it('element, element', function () {
-    const elem = $('.rDOM, [rDOM]')
+    const elem = $('.simple-dom-query, [simple-dom-query]')
     expect(elem.length).to.equal(3)
   })
 
   it('element element', function () {
-    const elem = $('#div [rDOM]')
+    const elem = $('#div [simple-dom-query]')
     expect(elem.length).to.equal(1)
   })
 
@@ -48,14 +48,14 @@ describe('Selector: ', function () {
   })
 
   it('element>element', function () {
-    const elem = $('#div > .rDOM')
+    const elem = $('#div > .simple-dom-query')
     expect(elem.length).to.equal(2)
   })
 
   it('[attr]', function () {
-    const elem = $('[rDOM]')
+    const elem = $('[simple-dom-query]')
     expect(elem.length).to.equal(1)
-    const elem1 = $('[rDOM="1"]')
+    const elem1 = $('[simple-dom-query="1"]')
     expect(elem1.length).to.equal(1)
   })
 });

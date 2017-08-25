@@ -1,4 +1,8 @@
 /**
+* simple-dom-query. a JavaScript library for DOM operations
+* Released under the MIT license
+*/
+/**
  * 类操作
  */
 
@@ -178,7 +182,7 @@ const normalizeToCamel = str => str.replace(/\-[a-z]/g, data => data.substr(1).t
 
 const generateUuid = () => Math.random().toString().substr(2);
 
-const uuid = `rDOM${generateUuid()}`;
+const uuid = `simple-dom-query${generateUuid()}`;
 
 const getComputedStyle = window.getComputedStyle;
 
@@ -403,12 +407,12 @@ $.extend(classActions);
 $.extend(styles);
 $.extend(events);
 
-function rDOM (selector) {
+function simple-dom-query (selector) {
   return new $.init(selector)
 }
-rDOM.uuid = uuid;
-rDOM.rDOM = $;
+simple-dom-query.uuid = uuid;
+simple-dom-query.simple-dom-query = $;
 
-window.$ = rDOM;
+window.$ = simple-dom-query;
 
-export default rDOM;
+export default simple-dom-query;

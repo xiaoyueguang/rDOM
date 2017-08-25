@@ -7,8 +7,8 @@ module.exports = function (config) {
     reporters: ['mocha', 'coverage'],
     coverageReporter: {
       reporters: [
-        { type: 'lcov', dir: './coverage', subdir: '.' },
-        { type: 'text-summary', dir: './coverage', subdir: '.' }
+        { type: 'lcov', dir: '../coverage', subdir: '.' },
+        { type: 'text-summary', dir: '../coverage', subdir: '.' }
       ]
     },
     singleRun: true,

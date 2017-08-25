@@ -7,33 +7,33 @@ describe('Events', function () {
 
   it('On Event', function () {
     let index = 0
-    const $dom = $('.rDOM')
+    const $dom = $('.simple-dom-query')
     // on绑定后 还是原来的实例
     expect($dom.on('click', function () {
       index++
     })).to.be.equal($dom)
 
-    $('.rDOM')[0].click()
+    $('.simple-dom-query')[0].click()
     expect(index).to.be.equal(1)
-    $('.rDOM')[0].click()
+    $('.simple-dom-query')[0].click()
     expect(index).to.be.equal(2)
 
-    $('.rDOM').on('click', function () {
+    $('.simple-dom-query').on('click', function () {
       index++
     })
-    $('.rDOM')[0].click()
+    $('.simple-dom-query')[0].click()
     expect(index).to.be.equal(4)
 
     $('div').on('click', function () {
       index++
     })
-    $('.rDOM')[0].click()
+    $('.simple-dom-query')[0].click()
     expect(index).to.be.equal(7)
   })
 
   // 上下文判断
   it('On Event Context and Event', function () {
-    const $dom = $('.rDOM')
+    const $dom = $('.simple-dom-query')
     $dom.on('click', function (e) {
       expect(e).to.be.instanceOf(MouseEvent)
       expect(this).to.be.equal($dom[0])
@@ -44,7 +44,7 @@ describe('Events', function () {
   it('Off Event: Clear an event', function () {
     let index = 0
     const cb = () => index++
-    const $dom = $('.rDOM')
+    const $dom = $('.simple-dom-query')
     $dom.on('click', cb)
     $dom[0].click()
     expect(index).to.be.equal(1)
@@ -64,7 +64,7 @@ describe('Events', function () {
   it('Off Event: Clear all events', function () {
     let index = 0
     const cb = () => index++
-    const $dom = $('.rDOM')
+    const $dom = $('.simple-dom-query')
     $dom.on('click', cb)
     $dom.on('click', cb)
     $dom[0].click()
@@ -76,7 +76,7 @@ describe('Events', function () {
 
   it('Once Event', function () {
     let index = 0
-    const $dom = $('.rDOM')
+    const $dom = $('.simple-dom-query')
     expect($dom.once('click', e => index++))
       .to.be.equal($dom)
     $dom[0].click()
@@ -87,7 +87,7 @@ describe('Events', function () {
 
   // 上下文判断
   it('Once Event Context and Event', function () {
-    const $dom = $('.rDOM')
+    const $dom = $('.simple-dom-query')
     $dom.once('click', function (e) {
       expect(e).to.be.instanceOf(MouseEvent)
       expect(this).to.be.equal($dom[0])
@@ -97,7 +97,7 @@ describe('Events', function () {
 
   it('Trigger', function () {
     let i = 0
-    const $dom = $('.rDOM')
+    const $dom = $('.simple-dom-query')
     $dom.on('click', e => {
       i++
     })

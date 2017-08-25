@@ -8,16 +8,16 @@ describe('Collection', function () {
   it('eq', function () {
     const $div = $('div').eq(1)
     expect($div.length).to.be.equal(1)
-    expect($div[0].className).to.be.equal('rDOM')
-    expect($div).to.be.instanceOf($.rDOM.init)
+    expect($div[0].className).to.be.equal('simple-dom-query')
+    expect($div).to.be.instanceOf($.simpleDomQuery.init)
   })
 
   it('eq minus index', function () {
     const $div = $('div').eq(-2)
     expect($div.length).to.be.equal(1)
-    expect($div[0].className).to.be.equal('rDOM')
+    expect($div[0].className).to.be.equal('simple-dom-query')
     expect($div[0]).to.be.equal($('div').eq(1)[0])
-    expect($div).to.be.instanceOf($.rDOM.init)
+    expect($div).to.be.instanceOf($.simpleDomQuery.init)
   })
 
   it('map', function () {
@@ -33,8 +33,8 @@ describe('Collection', function () {
   it('filter', function () {
     expect($('div').filter(() => false)).to.be.length(0)
     expect($('div').filter(() => true)).to.be.length(3)
-    const $filter = $('div').filter(elem => elem.className === 'rDOM')
+    const $filter = $('div').filter(elem => elem.className === 'simple-dom-query')
     expect($filter).to.be.length(1)
-    expect($filter[0].className).to.equal('rDOM')
+    expect($filter[0].className).to.equal('simple-dom-query')
   })
 })

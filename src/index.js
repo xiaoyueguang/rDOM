@@ -46,10 +46,10 @@ $.extend(classActions)
 $.extend(styles)
 $.extend(events)
 
-export default function rDOM (selector) {
+export default function simpleDomQuery (selector) {
   return new $.init(selector)
 }
-rDOM.uuid = uuid
-rDOM.rDOM = $
+simpleDomQuery.uuid = uuid
+simpleDomQuery.simpleDomQuery = $
 
-window.$ = rDOM
+window.$ = simpleDomQuery

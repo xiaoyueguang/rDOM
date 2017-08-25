@@ -19,7 +19,7 @@ describe('Helper: ', function () {
   })
 
   it('uuid', function () {
-    expect($.rDOM.uuid).to.be.equal($.uuid)
+    expect($.simpleDomQuery.uuid).to.be.equal($.uuid)
   })
 
   it('generateUuid', function () {

@@ -1,25 +1,28 @@
 let rollup = require('rollup')
 
 const banner = `/**
-* rDOM. a JavaScript library for DOM operations
+* simple-dom-query. a JavaScript library for DOM operations
 * Released under the MIT license
 */`
 
-const config = {
- entry: './src/index.js',
- format: 'iife',
- moduleName: 'rDOM',
- dest: './dist/rDOM.js',
- banner
+const input = {input: './src/index.js'}
+const output = ({name, format}) => {
+  return {
+    banner,
+    file: `./dist/${name}.js`,
+    format,
+    name
+  }
 }
-
-rollup.rollup(config).then(({write}) => {
-  write(config)
-
-  rollup.rollup(config).then(({write}) => {
-    write({
-      format: 'es',
-      dest: './dist/rDOM.es.js'
-    })
-  })
-})
+async function exec () {
+  let {write} = await rollup.rollup(input)
+  write(output({
+    name: 'simpleDomQuery.esm',
+    format: 'es'
+  }))
+  write(output({
+    name: 'simpleDomQuery',
+    format: 'iife'
+  }))
+}
+exec()

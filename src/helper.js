@@ -14,4 +14,4 @@ export const normalizeToCamel = str => str.replace(/\-[a-z]/g, data => data.subs
 
 export const generateUuid = () => Math.random().toString().substr(2)
 
-export const uuid = `rDOM${generateUuid()}`
+export const uuid = `simple-dom-query${generateUuid()}`
