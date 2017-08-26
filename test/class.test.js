@@ -1,9 +1,10 @@
 import $ from '../src/index'
 import {expect} from 'chai'
-import {beforeEach} from './helper'
+import {beforeEach, afterEach} from './helper'
 
 describe('Class', function () {
   this.beforeEach(beforeEach)
+  this.afterEach(afterEach)
 
   it('hasClass', function () {
     expect($('.simple-dom-query').hasClass('simple-dom-query')).to.be.true

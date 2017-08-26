@@ -1,8 +1,9 @@
 import $ from '../src/index.js'
 import {expect} from 'chai'
-import {beforeEach} from './helper'
+import {beforeEach, afterEach} from './helper'
 
 describe('Instance: ', function () {
   this.beforeEach(beforeEach)
+  this.afterEach(afterEach)
 });
 

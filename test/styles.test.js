@@ -1,10 +1,11 @@
 import $ from '../src/index.js'
 
 import {expect} from 'chai'
-import {beforeEach} from './helper'
+import {beforeEach, afterEach} from './helper'
 
 describe('Styles: ', function () {
   this.beforeEach(beforeEach)
+  this.afterEach(afterEach)
 
   it('get CSS', function () {
     expect($('p').css('width')).to.be.a('undefined')

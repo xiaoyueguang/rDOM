@@ -1,9 +1,10 @@
 import $ from '../src/index'
 import {expect} from 'chai'
-import {beforeEach} from './helper'
+import {beforeEach, afterEach} from './helper'
 
 describe('Events', function () {
   this.beforeEach(beforeEach)
+  this.afterEach(afterEach)
 
   it('On Event', function () {
     let index = 0

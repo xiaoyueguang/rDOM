@@ -4,9 +4,10 @@
   "description": "",
   "main": "dist/simple-dom-query.es.js",
   "scripts": {
-    "test": "karma start build/karma.cover.config.js",
     "build": "node build/build.js",
+    "test": "karma start build/karma.cover.config.js",
     "test:unit": "karma start build/karma.conf.js",
+    "test:e2e": "node run test/e2e/runner.js",
     "server:cover": "http-server"
   },
   "author": "Ray",

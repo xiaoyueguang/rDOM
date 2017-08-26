@@ -59,3 +59,19 @@ function setCorrectValue (key, value) {
     return value
   }
 }
+
+/**
+ * 执行动画
+ * @param {object} styleObject 样式对象
+ * @param {number} speed 速度
+ * @param {string} easing 效果
+ * @param {function} fn 回调
+ */
+// export function animate (styleObject = {}, speed = 400, easing = 'linear', fn = () => {}) {
+//   this.css('transition', `all ${speed}ms ${easing}`)
+//   this.css(styleObject)
+//   this.once('transitionend', function () {
+//     fn.call(this)
+//     this.css('transition', '')
+//   })
+// }

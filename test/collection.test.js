@@ -1,9 +1,10 @@
 import $ from '../src/index'
 import {expect} from 'chai'
-import {beforeEach} from './helper'
+import {beforeEach, afterEach} from './helper'
 
 describe('Collection', function () {
   this.beforeEach(beforeEach)
+  this.afterEach(afterEach)
 
   it('eq', function () {
     const $div = $('div').eq(1)

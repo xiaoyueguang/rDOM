@@ -1,6 +1,6 @@
 export function createElement (index) {
   const div = document.createElement('div')
-  div.innerHTML = index
+  div.innerHTML = index || ''
   return div
 }
 
@@ -30,4 +30,11 @@ export function beforeEach () {
 
 export function insert (parent, child) {
   parent.appendChild(child)
+}
+
+export function afterEach () {
+  let div = document.getElementById('div')
+  while(div.children[0]) {
+    div.removeChild(div.firstChild)
+  }
 }
