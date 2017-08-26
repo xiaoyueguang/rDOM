@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Performance</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <style>
+    #div {width: 0; height: 0; overflow: hidden;}
+    #table {width: 600px; margin: auto; text-align: center; border-top: 1px solid #666; border-left: 1px solid #666;}
+    td {border-bottom: 1px solid #666; border-right: 1px solid #666;}
+  </style>
+  <body>
+    <table id="table" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="3">性能比较</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>simple-dom-query</td>
+        <td>jquery</td>
+      </tr>
+      <tr>
+        <td>大小(uglify + gzip)</td>
+        <td>3k</td>
+        <td>30k</td>
+      </tr>
+      <tr>
+        <td>查询DOM耗时</td>
+        <td id='s-select'></td>
+        <td id='j-select'></td>
+      </tr>
+      <tr>
+        <td>设置 CSS耗时</td>
+        <td id='s-css'></td>
+        <td id='j-css'></td>
+      </tr>
+      <tr>
+        <td>设置 文字耗时</td>
+        <td id='s-text'></td>
+        <td id='j-text'></td>
+      </tr>
+    </table>
+    <div id="div"></div>
+  </body>
+  <script src='../dist/simpleDomQuery.min.js'></script>
+  <script src='//cdn.bootcss.com/jquery/3.2.1/jquery.min.js'></script>
+  <script>
+    // 初始化
+    const div = document.getElementById('div')
+    let i = 0
+    while(i < 10) {
+      i++
+      div.appendChild(create(i))
+    }
+
+    function create (index) {
+      const div = document.createElement('div')
+      div.className = `test test${index} group${Math.floor(index / 10)}`
+      div.innerHTML = Math.random()
+      return div
+    }
+    // 定义记录方法
+    function record (fn, id) {
+      const time = new Date().getTime()
+      let i = 0
+      while (i < 500) {
+        i++
+        fn()
+      }
+      document.getElementById(id).innerHTML = new Date().getTime() - time + 'ms'
+    }
+
+
+    setTimeout(() => {
+      record(() => {
+        simpleDomQuery('.test')
+      }, 's-select')
+      record(() => {
+        jQuery('.test')
+      }, 'j-select')
+    })
+    setTimeout(() => {
+      record(() => {
+        simpleDomQuery('.group1').css('color', 'red')
+        simpleDomQuery('.group1').css('color', 'black')
+      }, 's-css')
+      record(() => {
+        jQuery('.group1').css('color', 'red')
+        jQuery('.group1').css('color', 'black')
+      }, 'j-css')
+    })
+
+    setTimeout(() => {
+      record(() => {
+        simpleDomQuery('.group1').text()
+        simpleDomQuery('.group1').text('1')
+        simpleDomQuery('.group1').text('')
+      }, 's-text')
+      record(() => {
+        jQuery('.group1').text()
+        jQuery('.group1').text('1')
+        jQuery('.group1').text('')
+      }, 'j-text')
+    })
+  </script>
+
+
+</html>

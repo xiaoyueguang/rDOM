@@ -1,3 +1,5 @@
+const forEach = Array.prototype.forEach
+
 /**
  * 选择第几个元素
  * @param {number} index 序号. 负数表示从后往前
@@ -43,7 +45,10 @@ export function setCollection (context, collection) {
   clearCollection(context)
   context._collections = collection
   context.length = collection.length
-  Array.from(collection).forEach((elem, index) => {
-    context[index] = elem
-  })
+  let i = 0
+  // for 的性能比 forEach 和 map 要快了一倍...
+  for (; i < context.length; i++) {
+    context[i] = collection[i]
+  }
+
 }

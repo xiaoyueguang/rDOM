@@ -155,9 +155,12 @@ function setCollection (context, collection) {
   clearCollection(context);
   context._collections = collection;
   context.length = collection.length;
-  Array.from(collection).forEach((elem, index) => {
-    context[index] = elem;
-  });
+  let i = 0;
+  // for 的性能比 forEach 和 map 要快了一倍...
+  for (; i < context.length; i++) {
+    context[i] = collection[i];
+  }
+
 }
 
 
@@ -246,6 +249,22 @@ function setCorrectValue (key, value) {
     return value
   }
 }
+
+/**
+ * 执行动画
+ * @param {object} styleObject 样式对象
+ * @param {number} speed 速度
+ * @param {string} easing 效果
+ * @param {function} fn 回调
+ */
+// export function animate (styleObject = {}, speed = 400, easing = 'linear', fn = () => {}) {
+//   this.css('transition', `all ${speed}ms ${easing}`)
+//   this.css(styleObject)
+//   this.once('transitionend', function () {
+//     fn.call(this)
+//     this.css('transition', '')
+//   })
+// }
 
 var styles = Object.freeze({
 	needUnit: needUnit,
@@ -371,18 +390,62 @@ var events = Object.freeze({
 	trigger: trigger
 });
 
-const $ = {
-  // 全局唯一
-  uuid,
+/**
+ * 节点操作
+ */
+/**
+ * 设置或获取文字
+ * @param {string|undefined} text 替换的字符串或空
+ * @return {$|string} 返回的字符串或集合
+ */
+function text (text) {
+  return replaceNodes.call(this, 'innerText', text)
+}
 
-  init (selector) {
-    this.query(selector);
-  },
-  /**
-   * 查找
-   * @param {string} selector 
-   */
-  query (selector) {
+/**
+ * 设置或获取节点
+ * @param {string|undefined} html 替换的节点或空
+ * @return {$|string} 返回的节点或集合
+ */
+function html (html) {
+  return replaceNodes.call(this, 'innerHTML', html)
+}
+
+/**
+ * 根据传入的类型和内容 替换节点
+ * @param {string} type 类型
+ * @param {string} content 传入的内容
+ * @return {$|string} 返回的集合或内容
+ */
+function replaceNodes (type, content) {
+  let contents = '';
+  this.map(elem => {
+    if (content) {
+      elem.innerHTML = content;
+    } else {
+      contents += elem[type];
+    }
+  });
+
+  return content ? this : contents
+}
+
+var nodes = Object.freeze({
+	text: text,
+	html: html
+});
+
+/**
+ * 查找
+ * @param {string} selector 选择器
+ * @param {HTMLElement} context 上下文
+ */
+function query (selector, context) {
+  if (selector[0] === '<') {
+    const div = document.createElement('div');
+    div.innerHTML = selector;
+    setCollection(this, div.children);
+  } else {
     // 元素
     if (selector.nodeType === 1) {
       this[0] = selector;
@@ -390,11 +453,23 @@ const $ = {
       this.length = 1;
     } else {
       this._selectors = selector;
-      const elems = document.querySelectorAll(selector);
+      const elems = context.querySelectorAll(selector);
       this._collections = elems;
       setCollection(this, elems);
     }
-  },
+  }
+}
+
+function init (selector, context = document) {
+  this.query(selector, context);
+}
+
+const $ = {
+  // 全局唯一
+  uuid,
+
+  init,
+  query,
   // 扩展
   extend (obj) {
     for (let key in obj) {
@@ -409,15 +484,16 @@ $.extend(collection);
 $.extend(classActions);
 $.extend(styles);
 $.extend(events);
+$.extend(nodes);
 
-function simple-dom-query (selector) {
+function simpleDomQuery (selector) {
   return new $.init(selector)
 }
-simple-dom-query.uuid = uuid;
-simple-dom-query.simple-dom-query = $;
+simpleDomQuery.uuid = uuid;
+simpleDomQuery.simpleDomQuery = $;
 
-window.$ = simple-dom-query;
+window.$ = simpleDomQuery;
 
-return simple-dom-query;
+return simpleDomQuery;
 
 }());
