@@ -17,3 +17,5 @@
 * `$().hasClass(name)` 判断是否有该类
 * `$().text(string)` 获取或设置值
 * `$().html(string)` 获取或设置值
+
+### [覆盖率](https://xiaoyueguang.github.io/simple-dom-query/coverage/lcov-report/src/index.html)
