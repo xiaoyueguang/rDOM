@@ -27,9 +27,6 @@ describe('Node: ', function () {
     const $dom = $('<div><span></span></div>')
     expect($dom.length).to.be.equal(1)
     expect($dom.html()).to.be.equal('<span></span>')
-  })
-
-  it('remove', function () {
-
+    expect($dom).to.instanceof($.simpleDomQuery.init)
   })
 })

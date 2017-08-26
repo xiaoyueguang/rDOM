@@ -23,17 +23,6 @@ export function html (html) {
 }
 
 /**
- * 创建节点
- */
-export function create (html) {
-  const div = document.createElement('div')
-  div.innerHTML = html
-  const $dom = $(div)
-  setCollection($dom, div.children)
-  return $dom
-}
-
-/**
  * 根据传入的类型和内容 替换节点
  * @param {string} type 类型
  * @param {string} content 传入的内容
